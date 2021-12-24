@@ -15,7 +15,7 @@ class Condition:
         if self.conditionType == "Item":
             return "        " + self.elementName + " [" + str(self.elementId) + "] " \
                    + self.condition + " " + str(self.value) + "\n\r"
-        elif self.conditionType == "Flag_Short":
+        elif self.conditionType.startswith("Flag_"):
             return "        Flag " + str(self.elementId) + " " \
                    + self.condition + " " + str(self.value) + "\n\r"
         elif self.conditionType == "Quest":

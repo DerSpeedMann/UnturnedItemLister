@@ -15,7 +15,7 @@ class Reward:
         if self.rewardType == "Item":
             return "        " + self.itemName + " [" + str(self.elementId) + "] " \
                    + self.condition + " " + str(self.value) + "\n\r"
-        elif self.rewardType == "Flag_Short":
+        elif self.rewardType.startswith("Flag_"):
             return "        Flag " + str(self.elementId) + " " \
                    + self.condition + " " + str(self.value) + "\n\r"
         else:

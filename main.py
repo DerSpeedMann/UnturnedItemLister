@@ -17,6 +17,8 @@ wykletyMods = {"Wyklety's Stuff 1": "2462187786",
 
 russiaPlus = {"Russia+": "2475218356"}
 
+Arid = {"Arid": "2683620106"}
+
 fenixMods = {"Pento's Tactical Apparel": "1727733956",
              "Killa Outfit": "2358090921",
              "A.C.M.S. Unturnov Weapons | WIP version 1.7.3": "2421306199",
@@ -54,16 +56,16 @@ ignore_npc_stats = ignored_stats + ["Selling ", "Buying ", "Disable_Sorting",
                                     "Beard", "Hair", "Color_Skin", "Color_Hair", "Pose", ]
 
 # every type is read except the ones set to False
-read_types_items_only = {"Grower": False, "Sentry": False, "Tank": False, "Trap": True,
-                         "Oil_Pump": False, "Library": False, "Generator": False, "Beacon": False,
+read_types_items_only = {"Grower": True, "Sentry": True, "Tank": True, "Trap": True,
+                         "Oil_Pump": True, "Library": True, "Generator": True, "Beacon": True,
                          "Resource": False, "Effect": False, "Cloud": False, "Decal": False,
-                         "Large": False, "Medium": False, "Small": False, "Structure": False,
-                         "Barricade": False, "Storage": False,
+                         "Large": False, "Medium": False, "Small": False, "Structure": True,
+                         "Barricade": True, "Storage": True,
 
-                         "NPC": False, "Vendor": False, "Quest": False, "Dialogue": False, "Spawn": False,
-                         "Water": False, "Supply": True, "Food": False, "Refill": False, "Farm": False,
+                         "NPC": True, "Vendor": True, "Quest": True, "Dialogue": True, "Spawn": False,
+                         "Water": False, "Supply": True, "Food": True, "Refill": False, "Farm": False,
 
-                         "Vehicle_Repair_Tool": False, "Fuel": False, "Tire": False, "Tool": True,
+                         "Vehicle_Repair_Tool": True, "Fuel": False, "Tire": False, "Tool": True,
                          "Arrest_Start": False, "Arrest_End": False,
                          "Filter": True, "Detonator": True, "Box": False, "Charge": True,
                          "Compass": True, "Optic": True, "Map": True, "Key": False, "Fisher": True,
@@ -77,27 +79,27 @@ read_types_items_only = {"Grower": False, "Sentry": False, "Tank": False, "Trap"
                          "Medical": True}
 
 # every type is read except the ones set to False
-read_types = {"Grower": False, "Sentry": False, "Tank": False, "Trap": False,
-              "Oil_Pump": False, "Library": False, "Generator": False, "Beacon": False,
-              "Resource": False, "Effect": False, "Cloud": False, "Decal": False,
-              "Large": False, "Medium": False, "Small": False, "Structure": False,
-              "Barricade": True, "Storage": True,
+read_types = {"Grower": True, "Sentry": True, "Tank": True, "Trap": True,
+                         "Oil_Pump": True, "Library": True, "Generator": True, "Beacon": True,
+                         "Resource": False, "Effect": False, "Cloud": False, "Decal": False,
+                         "Large": False, "Medium": False, "Small": False, "Structure": True,
+                         "Barricade": True, "Storage": True,
 
-              "NPC": True, "Vendor": True, "Quest": True, "Dialogue": True, "Spawn": False,
-              "Water": True, "Supply": True, "Food": True, "Refill": False, "Farm": False,
+                         "NPC": True, "Vendor": True, "Quest": True, "Dialogue": True, "Spawn": False,
+                         "Water": False, "Supply": True, "Food": True, "Refill": False, "Farm": False,
 
-              "Vehicle_Repair_Tool": False, "Fuel": True, "Tire": False, "Tool": False,
-              "Arrest_Start": False, "Arrest_End": False,
-              "Filter": True, "Detonator": False, "Box": False, "Charge": False,
-              "Compass": False, "Optic": False, "Map": False, "Key": False, "Fisher": False,
+                         "Vehicle_Repair_Tool": True, "Fuel": False, "Tire": False, "Tool": True,
+                         "Arrest_Start": False, "Arrest_End": False,
+                         "Filter": True, "Detonator": True, "Box": False, "Charge": True,
+                         "Compass": True, "Optic": True, "Map": True, "Key": False, "Fisher": True,
 
-              "Hat": True, "Mask": True, "Glasses": True, "Vest": True, "Backpack": True,
-              "Shirt": True, "Pants": True,
+                         "Hat": True, "Mask": True, "Glasses": True, "Vest": True, "Backpack": True,
+                         "Shirt": True, "Pants": True,
 
-              "Animal": False, "Vehicle": False,
-              "Gun": True, "Throwable": True, "Melee": True,
-              "Grip": True, "Tactical": True, "Barrel": True, "Sight": True, "Magazine": True,
-              "Medical": True}
+                         "Animal": False, "Vehicle": False,
+                         "Gun": True, "Throwable": True, "Melee": True,
+                         "Grip": True, "Tactical": True, "Barrel": True, "Sight": True, "Magazine": True,
+                         "Medical": True}
 
 # every type is printed except the ones set to False
 printed_types = {"Grower": False, "Sentry": False, "Tank": False, "Trap": False,
@@ -115,12 +117,12 @@ printed_types = {"Grower": False, "Sentry": False, "Tank": False, "Trap": False,
                  "Filter": False, "Detonator": False, "Box": False, "Charge": False,
                  "Compass": False, "Optic": False, "Map": False, "Key": False, "Fisher": False,
 
-                 "Hat": True, "Mask": True, "Glasses": False, "Vest": True, "Backpack": False,
-                 "Shirt": True, "Pants": True,
+                 "Hat": False, "Mask": False, "Glasses": False, "Vest": False, "Backpack": False,
+                 "Shirt": False, "Pants": False,
 
                  "Animal": False, "Vehicle": False,
                  "Gun": True, "Throwable": False, "Melee": False,
-                 "Grip": False, "Tactical": False, "Barrel": False, "Sight": False,
+                 "Grip": False, "Tactical": False, "Barrel": False, "Sight": True,
                  "Magazine": False,
                  "Medical": False}
 
@@ -222,14 +224,19 @@ def list_items(mods=None, items_dict=None, reader=None):
 
 # TODO: Implement spawn_tables
 # TODO: Implement script to see all quest required to unlock all traders (find quest with flag reward)
+# TODO: Check quest falgs not printing correctly
+# TODO: Implement commands to allow printing needed category on demand
 
 global_items_dict = {}
 # list_items(wykletyMods)
 
 # load items from main game
-load_items({}, global_items_dict)
+# load_items({}, global_items_dict)
 # load item bundles
 # load_items(fenixItemBundles, global_items_dict)
-load_items(russiaPlus, global_items_dict)
+# load_items(russiaPlus, global_items_dict)
 
-list_items(russiaPlus, global_items_dict)
+# list_items(russiaPlus, global_items_dict)
+
+load_items(Arid, global_items_dict)
+list_items(Arid, global_items_dict)
