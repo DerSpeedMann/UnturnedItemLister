@@ -1,36 +1,14 @@
 # !/usr/bin/env python3
-
+import sqlite3
 from Reader import Reader
 
 unturnedBundle = 'F:/Program Files (x86)/Steam/SteamApps/common/Unturned/Bundles/Items'
 
 unturnedModFolder = 'F:/Program Files (x86)/Steam/SteamApps/workshop/content/304930/'
 
-wykletyMods = {"Wyklety's Stuff 1": "2462187786",
-               "Wyklety's Stuff 2": "2470499444",
-               "Wyklety's Stuff 3": "2476570908",
-               "Wyklety's Stuff 4": "2567374809",
-               "Wyklety's Stuff 5": "2483944369",
-               "Wyklety's Stuff 6": "2541179964",
-               "Wyklety's Stuff 7": "2547680732",
-               "Fenix Things": "2490928359"}
-
 russiaPlus = {"Russia+": "2475218356"}
 
 Arid = {"Arid": "2683620106"}
-
-fenixMods = {"Pento's Tactical Apparel": "1727733956",
-             "Killa Outfit": "2358090921",
-             "A.C.M.S. Unturnov Weapons | WIP version 1.7.3": "2421306199",
-             "A.C.M.S. Unturnov Armors | WIP version 1.1.0": "2463099029",
-             "Fenix Things": "2490928359",
-             "succccc": "2510497513",
-             "Medicals of Unturnov II | WIP version 1.0.1": "2519307620",
-             "We got the npcs": "2555191550",
-             "Andy's Unturnov1.5": "2570291183",
-             "money": "2165203195"}
-
-fenixItemBundles = {"Carpat Bundle": "1516033219", "Elver": "2136497468"}
 
 clothes = ["Hat", "Mask", "Vest", "Shirt", "Pants", "Backpack", "Glasses"]
 attachments = ["Tactical", "Sight", "Grip", "Barrel", "Magazine"]
@@ -117,12 +95,12 @@ printed_types = {"Grower": False, "Sentry": False, "Tank": False, "Trap": False,
                  "Filter": False, "Detonator": False, "Box": False, "Charge": False,
                  "Compass": False, "Optic": False, "Map": False, "Key": False, "Fisher": False,
 
-                 "Hat": False, "Mask": False, "Glasses": False, "Vest": False, "Backpack": False,
+                 "Hat": True, "Mask": True, "Glasses": False, "Vest": True, "Backpack": False,
                  "Shirt": False, "Pants": False,
 
                  "Animal": False, "Vehicle": False,
                  "Gun": True, "Throwable": False, "Melee": False,
-                 "Grip": False, "Tactical": False, "Barrel": False, "Sight": True,
+                 "Grip": False, "Tactical": False, "Barrel": False, "Sight": False,
                  "Magazine": False,
                  "Medical": False}
 
@@ -221,6 +199,26 @@ def list_items(mods=None, items_dict=None, reader=None):
                       item_requirements=True, item_vendor_name=True)
     # reader.print_sorted_npc_buys()
 
+
+def create_table(fields):
+    conn = sqlite3.connect('your_database.db')
+    c = conn.cursor()
+
+    # Define common fields
+    common_fields = "ID INTEGER PRIMARY KEY, CommonField1 TEXT NOT NULL, CommonField2 INTEGER NOT NULL"
+
+    # Define optional fields dynamically based on input
+    optional_fields = ", ".join([f"{field} TEXT" for field in fields])
+
+    # Create table with common and optional fields
+    c.execute(f"CREATE TABLE YourTable ({common_fields}, {optional_fields})")
+
+    conn.commit()
+    conn.close()
+
+# Example usage
+fields_to_add = ['OptionalField1', 'OptionalField2']
+create_table(fields_to_add)
 
 # TODO: Implement spawn_tables
 # TODO: Implement script to see all quest required to unlock all traders (find quest with flag reward)
