@@ -1,5 +1,6 @@
 # !/usr/bin/env python3
-import sqlite3
+import mysql.connector
+import configparser
 from Reader import Reader
 
 unturnedBundle = 'F:/Program Files (x86)/Steam/SteamApps/common/Unturned/Bundles/Items'
@@ -215,7 +216,31 @@ def create_table(fields):
 
     conn.commit()
     conn.close()
+def read_config(filename='config.ini'):
+    config = configparser.ConfigParser()
+    config.read(filename)
+    return config['database']
 
+def create_database(config):
+    conn = mysql.connector.connect(
+        host=config['host'],
+        user=config['user'],
+        password=config['password']
+    )
+    cursor = conn.cursor()
+
+    # Drop existing database if it exists
+    cursor.execute(f"DROP DATABASE IF EXISTS {config['database']}")
+
+    # Create new database
+    cursor.execute(f"CREATE DATABASE {config['database']}")
+
+    conn.commit()
+    conn.close()
+
+# Example usage
+config = read_config()
+create_database(config)
 # Example usage
 fields_to_add = ['OptionalField1', 'OptionalField2']
 create_table(fields_to_add)
